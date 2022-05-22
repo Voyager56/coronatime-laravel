@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('components.login');
-});
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+	$request->fulfill();
+	return redirect('/email/verify');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::get('/', [SessionController::class, 'index'])->name('home');
+Route::post('/login', [SessionController::class, 'store'])->name('login');
+Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+
+Route::get('/signup', [RegistrationController::class, 'create'])->name('register');
+Route::post('/signup', [RegistrationController::class, 'store'])->name('register');
+
+// Route::get('/send-mail', )
