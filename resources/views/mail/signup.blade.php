@@ -11,10 +11,10 @@
             <tr>
                 <td align="center" style="padding:0; position: relative">
                    <img  src="{{asset('images/email-photo.png')}}" alt="">
-                   <h1>Confirmation Email</h1>
-                   <p>click this button to verify your email</p>
+                   <h1>{{$msg}}</h1>
+                   <p>{{$clickMessage}}</p>
 
-                   <a href="{{$url}}" style="text-decoration: none; color:white; background-color:lightgreen; padding: 1rem 5rem; margin-top: 15px; border-radius: 12px;">VERIFY EMAIL</a>
+                   <a href="{{$url}}" style="text-decoration: none; color:white; background-color:lightgreen; padding: 1rem 5rem; margin-top: 15px; border-radius: 12px;">{{$buttonText}}</a>
                 </td>
             </tr>
         </table>

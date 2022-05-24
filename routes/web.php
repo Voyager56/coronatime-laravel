@@ -33,6 +33,8 @@ Route::get('/home', [DashboardController::class, 'index'])->middleware(['auth', 
 
 Route::get('/forgot-password', [PasswordResetController::class, 'index'])->middleware('guest')->name('password.request');
 Route::post('/forgot-password', [PasswordResetController::class, 'create'])->middleware('guest')->name('password.email');
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'show'])->middleware('guest')->name('password.reset');
+Route::post('/reset-password', [PasswordResetController::class, 'update'])->middleware('guest')->name('password.update');
 
 Route::get('locale/{lang}', function ($lang) {
 	app()->setLocale($lang);
