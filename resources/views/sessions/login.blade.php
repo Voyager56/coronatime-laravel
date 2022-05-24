@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('content')
 
-    <section class="py-20 flex flex-col justify-between h-[60vh]">
-            <h2 class="text-2xl font-bold">Welcome Back</h2>
-            <p>Welcome back! Please enter your details</p>     
+    <section class="flex flex-col my-10">
+            <h2 class="py-5 text-3xl font-bold">Welcome Back</h2>
+            <p class="pb-5 text-gray-500 text-xl">Welcome back! Please enter your details</p>     
 
             <form method="POST" action="/login">
 
@@ -30,7 +30,7 @@
                         <input type="checkbox" name="remember" id="remember" class="border border-gray-400  rounded-xl">
                         <label for="remember" class="ml-5 block mb-2 uppercase font-bold text-xs text-gray-700">Remember this device</label>
                     </div>
-                    <a class="text-xs text-blue-400" href="/reset/password">Forgot Password?</a>
+                    <a class="text-xs text-blue-400" href="/forgot-password">Forgot Password?</a>
                 </div>
                 <div class="mb-6">
                     <button type="submit" class="bg-green-400 text-white rounded-xl py-2 px-4 w-[20rem] h-[3rem] hover:bg-blur-500">

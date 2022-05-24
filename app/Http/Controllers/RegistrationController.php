@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\View\View;
 
 class RegistrationController extends Controller
 {
-	public function create()
+	public function create(): View
 	{
 		return view('sessions.register');
 	}
 
-	public function store()
+	public function store(UserRequest $request): View
 	{
-		// dd(request()->all());
-
-		$userData = request()->validate([
-			'username'     => 'required|min:3',
-			'email'        => 'required|email|unique:users',
-			'password'     => 'required|min:6|confirmed',
-		]);
-
-		// dd($userData);
+		$userData = $request->validated();
 
 		$user = User::create([
 			'username'     => $userData['username'],
@@ -30,7 +24,13 @@ class RegistrationController extends Controller
 			'password'     => bcrypt($userData['password']),
 		]);
 
+		auth()->login($user);
 		event(new Registered($user));
-		// dd($user);
+
+		return view('mail.verify', [
+			'message'     => 'We have sent you a confirmation email',
+			'slug'        => '',
+			'linkMessage' => '',
+		]);
 	}
 }

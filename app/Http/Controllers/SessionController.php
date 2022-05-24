@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -13,13 +14,16 @@ class SessionController extends Controller
 		return view('sessions.login');
 	}
 
-	public function store(LoginRequest $request)
+	public function store(LoginRequest $request): RedirectResponse
 	{
-		$request->validated();
-
-		if (Auth::attempt(['username' => $request->username, 'password' => $request->password], request()->has('remember')))
+		if (Auth::attempt(['username' => $request->username, 'password' => $request->password]))
 		{
-			return redirect()->route('home');
+			return back()->withErrors(['username'=>'You are now logged in.']);
+		}
+		elseif (Auth::attempt(['email'=> $request->username, 'password' => $request->password]))
+		{
+			echo 'success with email!';
+			return back()->withErrors(['username'=>'You are now logged in. email']);
 		}
 
 		return back()
@@ -30,7 +34,7 @@ class SessionController extends Controller
 		]);
 	}
 
-	public function destroy()
+	public function destroy(): RedirectResponse
 	{
 		auth()->logout();
 		return redirect('/');
