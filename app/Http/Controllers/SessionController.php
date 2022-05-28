@@ -22,7 +22,6 @@ class SessionController extends Controller
 		}
 		elseif (Auth::attempt(['email'=> $request->username, 'password' => $request->password]))
 		{
-			echo 'success with email!';
 			return back()->withErrors(['username'=>'You are now logged in. email']);
 		}
 

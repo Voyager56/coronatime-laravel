@@ -1,12 +1,13 @@
 @extends('welcome')
 @section('content')
+    <x-langbuttons class="ml-auto mr-10" />
 
-    <section class="flex flex-col my-10">
+    <section class="my-10 flex flex-col">
         <h1 class="py-5 text-3xl font-bold">
-            Welcome to Coronatime
+            {{ __('welcome-to') }}
         </h1>
-        <p class="pb-5 text-gray-500 text-xl">
-            Please enter required info to sign up
+        <p class="pb-5 text-xl text-gray-500">
+            {{ __('enter-fields') }}
         </p>
 
         <form method="POST" action="/signup">
@@ -14,50 +15,61 @@
             @csrf
 
             <div class="mb-6">
-                <label for="username" class="block mb-2 uppercase font-bold text-xs text-gray-700">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter unique username" class="border border-blue-400 w-[20rem] p-2 focus:border-blue-700 focus:outline-none" value="{{old('username')}}" required>
+                <label for="username"
+                    class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('username') }}</label>
+                <input type="text" name="username" id="username" placeholder="{{ __('enter-username') }}"
+                    class="w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    value="{{ old('username') }}" required>
 
 
                 @error('username')
-                    <p class="text-gray-500 text-xs italic">{{ $message }}</p>
+                    <p class="text-xs italic text-gray-500">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mb-6">
-                <label for="email" class="block mb-2 uppercase font-bold text-xs text-gray-700">Email</label>
-                <input type="text" name="email" id="email" placeholder="Enter your email" class="border border-blue-400 w-[20rem] p-2 focus:border-blue-700 focus:outline-none value="{{old('email')}}"  required>
+                <label for="email" class="mb-2 block text-xs font-bold uppercase text-gray-700"> {{ __('email') }}</label>
+                <input type="text" name="email" id="email" placeholder="{{ __('enter-email') }}"
+                    class="value= w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    {{ old('email') }}" required>
 
                 @error('email')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    <p class="text-xs italic text-red-500">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="password" class="block mb-2 uppercase font-bold text-xs text-gray-700">Password</label>
-                <input type="password" name="password" id="password" placeholder="Fill in password" class="border border-blue-400 w-[20rem] p-2 focus:border-blue-700 focus:outline-none" required>
+                <label for="password" class="mb-2 block text-xs font-bold uppercase text-gray-700">
+                    {{ __('password') }}</label>
+                <input type="password" name="password" id="password" placeholder="{{ __('enter-password') }}"
+                    class="w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none" required>
 
                 @error('password')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    <p class="text-xs italic text-red-500">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="password_confirmation" class="block mb-2 uppercase font-bold text-xs text-gray-700">Repeat Password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat password" class="border w-[20rem] border-blue-400 p-2 focus:border-blue-700 focus:outline-none" value="{{old('repeat-password')}}"  required>
+                <label for="password_confirmation" class="mb-2 block text-xs font-bold uppercase text-gray-700">
+                    {{ __('repeat-password') }}</label>
+                <input type="password" name="password_confirmation" id="password_confirmation"
+                    placeholder="{{ __('repeat-password') }}"
+                    class="w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    value="{{ old('repeat-password') }}" required>
 
                 @error('password_confirmation')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    <p class="text-xs italic text-red-500">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-6">
-                <button type="submit" class="bg-green-400 text-white rounded-xl py-2 px-4 w-[20rem] h-[3rem] hover:bg-blur-500">
-                    Submit
+                <button type="submit"
+                    class="hover:bg-blur-500 h-[3rem] w-[20rem] rounded-xl bg-green-400 py-2 px-4 text-white">
+                    {{ __('sign-up') }}
                 </button>
             </div>
         </form>
 
         <div class="flex">
-            <p class="px-5">Already have an account?</p>
-            <a class="font-bold" href="/">Login!</a>
+            <p class="px-5"> {{ __('have-account?') }}</p>
+            <a class="font-bold" href="/"> {{ __('log-in') }}</a>
         </div>
     </section>
-
 @endsection

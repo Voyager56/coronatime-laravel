@@ -9,7 +9,7 @@
 </head>
 <body class="flex flex-col items-center h-[100vh]">
 
-    <img src="{{asset('images/coronatimelogo.svg')}}" width="300" alt="coronatime" class="mt-10">
+    <a href="{{route('home')}}"><img src="{{asset('images/coronatimelogo.svg')}}" width="300" alt="coronatime" class="mt-10"></a>
 
     <div  class="absolute top-[50%] flex flex-col items-center">
         <h1 class="text-4xl font-bold mb-10">Reset Password</h1>

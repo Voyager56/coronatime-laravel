@@ -20,10 +20,9 @@ class EmailController extends Controller
 		]);
 	}
 
-	public function store(EmailVerificationRequest $request, int $id): View
+	public function store(EmailVerificationRequest $request): View
 	{
 		$request->fulfill();
-
 		auth()->logout();
 		return view('mail.verify', [
 			'message'     => 'Your account is confirmed, you can sign in',

@@ -30,6 +30,8 @@ class RegistrationController extends Controller
 		return view('mail.verify', [
 			'message'     => 'We have sent you a confirmation email',
 			'slug'        => '',
+			'form'        => '',
+			'link'        => '',
 			'linkMessage' => '',
 		]);
 	}

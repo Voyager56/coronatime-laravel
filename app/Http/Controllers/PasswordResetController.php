@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class PasswordResetController extends Controller
 {
-	public function index()
+	public function index(): View
 	{
 		return view('auth.reset');
 	}
 
-	public function create(Request $request)
+	public function create(Request $request): View
 	{
 		$request->validate(['email' => 'required|email']);
 
@@ -46,7 +48,7 @@ class PasswordResetController extends Controller
 		]);
 	}
 
-	public function update(Request $request)
+	public function update(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'token'    => 'required',
@@ -71,7 +73,7 @@ class PasswordResetController extends Controller
 		return redirect('/')->with('message', 'Your password has been changed!');
 	}
 
-	public function show($token)
+	public function show(string $token): View
 	{
 		return view('auth.reset-password', ['token' => $token]);
 	}
