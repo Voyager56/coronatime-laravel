@@ -45,6 +45,8 @@ and fill in the values for the database connection.
 
 Initialize the database: `php artisan migrate:fresh`
 
+run `php artisan db:init` to initialize the statistics database
+
 ## Development
 
 to run the application: `php artisan serve`

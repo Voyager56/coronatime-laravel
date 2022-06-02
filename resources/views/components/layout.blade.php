@@ -11,7 +11,7 @@
 
 <body class="flex h-[100vh] flex-col items-center">
 
-    <a href="/"><img src="{{ asset('images/coronatimelogo.svg') }}" width="300" alt="coronatime"
+    <a href="{{ route('login') }}"><img src="{{ asset('images/coronatimelogo.svg') }}" width="300" alt="coronatime"
             class="mt-10"></a>
     <x-langbuttons />
     @yield('content')

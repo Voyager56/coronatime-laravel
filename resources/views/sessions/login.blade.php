@@ -5,11 +5,7 @@
         <p class="pb-5 text-xl text-gray-500">{{ __('enter-details') }}</p>
 
         <form method="POST" action="{{ route('login.store') }}">
-
             @csrf
-
-
-
             <div class="mb-6">
                 <label for="username"
                     class="text-black-700 mb-2 block text-xs font-bold uppercase">{{ __('username') }}</label>
@@ -48,7 +44,7 @@
             </div>
             <div class="flex">
                 <p class="px-5">{{ __('account?') }}</p>
-                <a class="font-bold" href="/signup">{{ __('sign-up') }}</a>
+                <a class="font-bold" href="{{ rooute('register') }}">{{ __('sign-up') }}</a>
             </div>
         </form>
     </section>

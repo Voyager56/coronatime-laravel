@@ -75,7 +75,7 @@
 
         <div class="flex">
             <p class="px-5"> {{ __('have-account?') }}</p>
-            <a class="font-bold" href="/"> {{ __('log-in') }}</a>
+            <a class="font-bold" href="{{ route('login') }}"> {{ __('log-in') }}</a>
         </div>
     </section>
 @endsection
