@@ -44,7 +44,7 @@
             </div>
             <div class="flex">
                 <p class="px-5">{{ __('account?') }}</p>
-                <a class="font-bold" href="{{ rooute('register') }}">{{ __('sign-up') }}</a>
+                <a class="font-bold" href="{{ route('register') }}">{{ __('sign-up') }}</a>
             </div>
         </form>
     </section>

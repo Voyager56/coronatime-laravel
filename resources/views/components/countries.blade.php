@@ -22,30 +22,42 @@
         <table class="w-full rounded-xl text-left">
             <thead class="flex w-full rounded-xl bg-gray-200 text-black">
                 <tr class="mb-4 flex w-full">
-                    <th class="flex w-1/4 items-center justify-center md:p-4" id="location" data-asc=false>
-                        {{ __('location') }}
+                    <th class="flex items-center justify-center md:w-1/4 md:p-4" id="location" data-asc=false>
+                        <div class="w-[50px]">
+
+                            {{ __('location') }}
+                        </div>
                         <x-arrows />
                     </th>
-                    <th class="flex w-1/4 items-center justify-center md:p-4" id="newcases" data-asc=false>
-                        {{ __('new-cases') }}
+                    <th class="flex items-center justify-center md:w-1/4 md:p-4" id="newcases" data-asc=false>
+                        <div class="w-[70px] overflow-clip">
+
+                            {{ __('new-cases') }}
+                        </div>
                         <x-arrows />
 
                     </th>
-                    <th class="flex w-1/4 items-center justify-center md:p-4" id="deaths" data-asc=false>
-                        {{ __('deaths') }}
+                    <th class="flex items-center justify-center md:w-1/4 md:p-4" id="deaths" data-asc=false>
+                        <div class="w-[70px] overflow-clip">
+
+                            {{ __('deaths') }}
+                        </div>
                         <x-arrows />
 
                     </th>
-                    <th class="flex w-1/4 items-center justify-center md:p-4" id="recovered" data-asc=false>
-                        {{ __('recovered') }}
+                    <th class="flex items-center justify-center md:w-1/4 md:p-4" id="recovered" data-asc=false>
+                        <div class="w-[70px] overflow-clip">
+
+                            {{ __('recovered') }}
+                        </div>
                         <x-arrows />
                     </th>
                 </tr>
             </thead>
             <tbody class="bg-grey-light flex h-[30rem] w-full flex-col items-center justify-between overflow-y-scroll">
                 @foreach ($countries as $country)
-                    <tr class="mb-4 flex w-full" id='data_table'>
-                        <td class="w-1/4 p-4" id="location-table"> {{ $country->$lang }}
+                    <tr class="mb-4 flex w-full md:text-center" id='data_table'>
+                        <td class="w-1/4 overflow-clip p-4" id="location-table"> {{ $country->$lang }}
                         </td>
                         <td class="w-1/4 p-4" id="newcases-table"> {{ $country->statistics->confirmed }}
                         </td>

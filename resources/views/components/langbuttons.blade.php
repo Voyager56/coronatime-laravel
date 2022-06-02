@@ -1,7 +1,7 @@
 <div id="dropdown" {{ $attributes->merge(['class' => 'relative cursor-pointer']) }}>
     {{ __(ucfirst(app()->getLocale())) }}
     <div id="dropdown-menu" style="display: none;"
-        {{ $attributes->merge(['class' => 'absolute top-10 flex flex-col justify-center rounded-xl border bg-green-400 p-3']) }}>
+        class='absolute top-10 flex flex-col justify-center rounded-xl border bg-green-400 p-3'>
         <a href="{{ route('lang', 'en') }}" id='en' class="text-center text-white hover:text-blue-400">
             English
         </a>

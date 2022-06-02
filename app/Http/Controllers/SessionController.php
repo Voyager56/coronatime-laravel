@@ -22,8 +22,8 @@ class SessionController extends Controller
 		return back()
 		->withInput()
 		->withErrors([
-			'username' => 'These credentials do not match our records.',
-			'password' => 'These credentials do not match our records.',
+			'username' => __('credentials-match'),
+			'password' => __('credentials-match'),
 		]);
 	}
 

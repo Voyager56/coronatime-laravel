@@ -43,6 +43,8 @@ Install node modules: `npm install`
 Copy the .env file to the root directory: `cp .env.example .env`
 and fill in the values for the database connection.
 
+Generate the keys for the application: `php artisan key:generate`
+
 Initialize the database: `php artisan migrate:fresh`
 
 run `php artisan db:init` to initialize the statistics database
@@ -66,6 +68,6 @@ and for live reloading: `npm run watch`
 
 -   after all this install php-fpm and nginx and configure them.
 
-## Recources
+## Resources
 
 -   [Draw Sql](https://drawsql.app/redberry-18/diagrams/coronatime)
