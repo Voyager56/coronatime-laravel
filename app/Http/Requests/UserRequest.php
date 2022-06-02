@@ -29,4 +29,25 @@ class UserRequest extends FormRequest
 			'password'     => 'required|min:6|confirmed',
 		];
 	}
+
+	public function messages()
+	{
+		return [
+			'username.required'  => __('username-required'),
+			'username.min'       => __('username-min'),
+			'email.required'     => __('email-required'),
+			'email.email'        => __('email-invalid'),
+			'email.unique'       => __('email-unique'),
+			'password.required'  => __('password-required'),
+			'password.min'       => __('password-min'),
+			'password.confirmed' => __('password-confirmed'),
+		];
+	}
+
+	public function response()
+	{
+		return redirect()->back()->withInput()->withErrors(
+			$this->errors()
+		);
+	}
 }

@@ -20,7 +20,7 @@ return new class extends Migration {
 			$table->integer('confirmed');
 			$table->integer('deaths');
 			$table->integer('recovered');
-			$table->integer('country_id');
+			$table->foreignId('country_id');
 		});
 	}
 
