@@ -30,7 +30,7 @@
                         <x-arrows />
                     </th>
                     <th class="flex items-center justify-center md:w-1/4 md:p-4" id="newcases" data-asc=false>
-                        <div class="w-[70px] overflow-clip">
+                        <div class="w-[70px] overflow-clip md:w-[150px] md:overflow-visible">
 
                             {{ __('new-cases') }}
                         </div>
@@ -38,7 +38,7 @@
 
                     </th>
                     <th class="flex items-center justify-center md:w-1/4 md:p-4" id="deaths" data-asc=false>
-                        <div class="w-[70px] overflow-clip">
+                        <div class="w-[70px] overflow-clip md:w-[100px] md:overflow-visible">
 
                             {{ __('deaths') }}
                         </div>
@@ -46,7 +46,7 @@
 
                     </th>
                     <th class="flex items-center justify-center md:w-1/4 md:p-4" id="recovered" data-asc=false>
-                        <div class="w-[70px] overflow-clip">
+                        <div class="w-[70px] overflow-clip md:w-[170px] md:overflow-visible">
 
                             {{ __('recovered') }}
                         </div>

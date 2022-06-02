@@ -805,6 +805,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+@media (min-width: 640px) {
+
+  .sm\:w-\[70px\] {
+    width: 70px;
+  }
+}
 @media (min-width: 768px) {
 
   .md\:mx-\[8rem\] {
@@ -834,6 +840,30 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:w-1\/4 {
     width: 25%;
+  }
+
+  .md\:w-\[150px\] {
+    width: 150px;
+  }
+
+  .md\:w-\[100px\] {
+    width: 100px;
+  }
+
+  .md\:w-\[200px\] {
+    width: 200px;
+  }
+
+  .md\:w-\[170px\] {
+    width: 170px;
+  }
+
+  .md\:overflow-auto {
+    overflow: auto;
+  }
+
+  .md\:overflow-visible {
+    overflow: visible;
   }
 
   .md\:p-4 {
