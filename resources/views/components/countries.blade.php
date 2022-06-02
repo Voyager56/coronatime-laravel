@@ -4,11 +4,11 @@
     $lang = app()->getlocale();
     @endphp
 
-    <div class="pb-10">
-        <h1 class="mt-20 ml-[8rem] text-4xl font-bold">{{ __('country') . ' ' . __('statistics') }}</h1>
-        <x-dashboardrouting class="ml-[8rem] pt-5" active="country" />
+    <div class="ml-5 pb-10 md:ml-[8rem]">
+        <h1 class="mt-20 text-4xl font-bold">{{ __('country') . ' ' . __('statistics') }}</h1>
+        <x-dashboardrouting class="pt-5" active="country" />
     </div>
-    <div class="px-[8rem]">
+    <div class="px-5 md:px-[8rem]">
 
 
         <form action="{{ route('show') }}" method="GET">
@@ -19,25 +19,24 @@
 
 
 
-        <table class="w-full rounded-xl text-center">
+        <table class="w-full rounded-xl text-left">
             <thead class="flex w-full rounded-xl bg-gray-200 text-black">
                 <tr class="mb-4 flex w-full">
-                    <th class="flex w-1/4 items-center justify-center p-4" id="location" data-asc=false>
+                    <th class="flex w-1/4 items-center justify-center md:p-4" id="location" data-asc=false>
                         {{ __('location') }}
                         <x-arrows />
-
-
                     </th>
-                    <th class="flex w-1/4 items-center justify-center p-4" id="newcases" data-asc=false>
+                    <th class="flex w-1/4 items-center justify-center md:p-4" id="newcases" data-asc=false>
                         {{ __('new-cases') }}
                         <x-arrows />
 
                     </th>
-                    <th class="flex w-1/4 items-center justify-center p-4" id="deaths" data-asc=false> {{ __('deaths') }}
+                    <th class="flex w-1/4 items-center justify-center md:p-4" id="deaths" data-asc=false>
+                        {{ __('deaths') }}
                         <x-arrows />
 
                     </th>
-                    <th class="flex w-1/4 items-center justify-center p-4" id="recovered" data-asc=false>
+                    <th class="flex w-1/4 items-center justify-center md:p-4" id="recovered" data-asc=false>
                         {{ __('recovered') }}
                         <x-arrows />
                     </th>

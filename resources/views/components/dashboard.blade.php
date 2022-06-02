@@ -12,8 +12,8 @@
 
 <body>
 
-    <div class="mx-20 my-5 flex items-center justify-between">
-        <a class="ml-10" href="{{ route('home') }}"><img src="{{ asset('images/coronatimelogo.svg') }}"
+    <div class="mx-5 my-5 flex items-center justify-between md:mx-[8rem]">
+        <a class="" href="{{ route('home') }}"><img src="{{ asset('images/coronatimelogo.svg') }}"
                 alt=""></a>
         <div class="flex w-[20em] items-center justify-evenly">
             <x-langbuttons />

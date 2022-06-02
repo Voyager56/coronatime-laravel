@@ -24,6 +24,14 @@
     "worldwide": "Worldwide",
     "country": "Country",
     "statistics": "Statistics" ,
-    "search": "Search"
+    "search": "Search",
+    "username-required": "Username is required",
+    "username-min": "Username must be at least 3 characters",
+    "email-required": "Email is required",
+    "email-invalid": "Email is invalid",
+    "email-unique": "Email is already taken",
+    "password-required": "Password is required",
+    "password-min": "Password must be at least 6 characters",
+    "password-confirmed": "Password and Confirm Password must match"
     
 }   

@@ -1,7 +1,5 @@
 @extends('welcome')
 @section('content')
-    <x-langbuttons class="ml-auto mr-10" />
-
     <section class="my-10 flex flex-col">
         <h2 class="py-5 text-3xl font-bold">{{ __('welcome') }}</h2>
         <p class="pb-5 text-xl text-gray-500">{{ __('enter-details') }}</p>
@@ -10,10 +8,13 @@
 
             @csrf
 
+
+
             <div class="mb-6">
                 <label for="username"
                     class="text-black-700 mb-2 block text-xs font-bold uppercase">{{ __('username') }}</label>
-                <input type="text" name="username" id="username" class="w-[20rem] rounded-xl border border-gray-400 p-2"
+                <input type="text" name="username" id="username"
+                    class="@error('username') border-red-400 @enderror w-[20rem] rounded-xl border border-gray-400 p-2"
                     value="" required>
 
                 @error('username')
@@ -23,7 +24,8 @@
             <div class="mb-6">
                 <label for="password"
                     class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('password') }}</label>
-                <input type="password" name="password" id="password" class="w-[20rem] rounded-xl border border-gray-400 p-2"
+                <input type="password" name="password" id="password"
+                    class="@error('password') border-red-400 @enderror w-[20rem] rounded-xl border border-gray-400 p-2"
                     required>
 
                 @error('password')
