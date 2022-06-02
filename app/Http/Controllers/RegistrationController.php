@@ -9,12 +9,7 @@ use Illuminate\View\View;
 
 class RegistrationController extends Controller
 {
-	public function create(): View
-	{
-		return view('sessions.register');
-	}
-
-	public function store(UserRequest $request): View
+	public function registration(UserRequest $request): View
 	{
 		$userData = $request->validated();
 

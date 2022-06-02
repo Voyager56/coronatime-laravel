@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
-	public function index(): View
+	public function verifyEmailView(): View
 	{
 		return view('mail.verify', [
 			'message'     => 'We have sent you a confirmation email, if you want to resend it, please click the button below.',
@@ -20,7 +20,7 @@ class EmailController extends Controller
 		]);
 	}
 
-	public function store(EmailVerificationRequest $request): View
+	public function confirmEmail(EmailVerificationRequest $request): View
 	{
 		$request->fulfill();
 		auth()->logout();
@@ -33,7 +33,7 @@ class EmailController extends Controller
 		]);
 	}
 
-	public function update(Request $request): RedirectResponse
+	public function emailSentView(Request $request): RedirectResponse
 	{
 		$request->user()->sendEmailVerificationNotification();
 		return back()->with('message', 'Verification link sent!');

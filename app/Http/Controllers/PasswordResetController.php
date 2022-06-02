@@ -12,17 +12,16 @@ use Illuminate\View\View;
 
 class PasswordResetController extends Controller
 {
-	public function index(): View
+	public function sendPasswordResetEmail(Request $request): RedirectResponse|View
 	{
-		return view('auth.reset');
-	}
-
-	public function create(Request $request): View
-	{
-		$request->validate(['email' => 'required|email']);
+		$email = $request->validate(['email' => 'required|email']);
+		$user = User::where('email', $email)->first();
+		if (!$user)
+		{
+			return redirect()->back()->withErrors(['email' => 'Email not found']);
+		}
 
 		$token = Str::random(64);
-
 		DB::table('password_resets')->insert([
 			'email'      => $request->email,
 			'token'      => $token,
@@ -48,7 +47,7 @@ class PasswordResetController extends Controller
 		]);
 	}
 
-	public function update(Request $request): RedirectResponse
+	public function saveNewPassword(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'token'    => 'required',
@@ -73,7 +72,7 @@ class PasswordResetController extends Controller
 		return redirect('/')->with('message', 'Your password has been changed!');
 	}
 
-	public function show(string $token): View
+	public function resetPassword(string $token): View
 	{
 		return view('auth.reset-password', ['token' => $token]);
 	}
