@@ -4,8 +4,6 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\Http;
-use App\Models\Country;
 
 class Kernel extends ConsoleKernel
 {
@@ -18,7 +16,7 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->call($this->fetch())->daily();
+		$schedule->command('fetch:database')->daily();
 	}
 
 	/**
@@ -31,38 +29,5 @@ class Kernel extends ConsoleKernel
 		$this->load(__DIR__ . '/Commands');
 
 		require base_path('routes/console.php');
-	}
-
-	private function fetch(): Void
-	{
-		$worldwideConfirmed = 0;
-		$worldwideDeaths = 0;
-		$worldwideRecovered = 0;
-		foreach (Country::all() as $country)
-		{
-			$countryStat = Http::post('https://devtest.ge/get-country-statistics', [
-				'code' => $country['code'],
-			])->json();
-
-			$country->statistics()->updateOrCreate([
-				'country_name' => $countryStat['country'],
-				'country_code' => $countryStat['code'],
-				'confirmed'    => $countryStat['confirmed'],
-				'deaths'       => $countryStat['deaths'],
-				'recovered'    => $countryStat['recovered'],
-			]);
-
-			$worldwideConfirmed += $countryStat['confirmed'];
-			$worldwideDeaths += $countryStat['deaths'];
-			$worldwideRecovered += $countryStat['recovered'];
-		}
-
-		cache()->remember('worldWideStat', now()->addDay(), function () use ($worldwideConfirmed, $worldwideDeaths, $worldwideRecovered) {
-			return [
-				'confirmed' => $worldwideConfirmed,
-				'deaths'    => $worldwideDeaths,
-				'recovered' => $worldwideRecovered,
-			];
-		});
 	}
 }
