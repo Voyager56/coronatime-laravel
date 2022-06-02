@@ -1,64 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Table of Contents
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+-   [Introduction](#introduction)
+-   [Prerequisites](#prerequisites)
+-   [Tech Stack](#tech-stack)
+-   [Getting Started](#getting-started)
+-   [Development](#development)
+-   [Deployment](#deployment)
+-   [Resources](#resources)
 
-## About Laravel
+## Introduction
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p> 
+    This is a webapp for checking the world coronavirus statistics.
+ </p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   [PHP@8.0 and up ](#https://www.php.net/downloads)
+-   [Composer@2.3.5 and up ](#https://getcomposer.org/download/)
+-   [Laravel@9 and up](#https://laravel.com/docs/7.x/installation)
+-   [npm@8 and up](#https://nodejs.org/en/download/)
+-   [MySQL Latest](#https://www.mysql.com/downloads/)
 
-## Learning Laravel
+## Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   [PHP](#https://www.php.net/)
+-   [Laravel](#https://laravel.com/)
+-   [MySQL](#https://www.mysql.com/)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Getting Started
 
-## Laravel Sponsors
+-   Installation:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Clone the repository: `git clone https://github.com/RedberryInternship/coronatime-Levan-Mikatadze`
 
-### Premium Partners
+Go to the root directory of the repository: `cd coronatime-Levan-Mikatadze`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Install neccesary dependencies: `composer install`
 
-## Contributing
+Install node modules: `npm install`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Copy the .env file to the root directory: `cp .env.example .env`
+and fill in the values for the database connection.
 
-## Code of Conduct
+Initialize the database: `php artisan migrate:fresh`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Development
 
-## Security Vulnerabilities
+to run the application: `php artisan serve`
+and for live reloading: `npm run watch`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Deployment
 
-## License
+-   ssh into the server: `ssh username@ipaddress`
+-   run sudo apt update
+-   run `sudo add-apt-repository ppa:ondrej/php`
+-   run `sudo apt install php8.0 php8.0-curl php8.0-mbstring php8.0-xml php8.0-sqlite3`
+-   run `sudo apt purge apache2`
+-   to install sqlite3 run `sudo apt install zip sqlite3` and and for php `curl https://getcomposer.org/installer | php` then `sudo mv composer.phar /usr/bin/composer`
+-   for node `curl https://deb.nodesource.com/setup_14.x | sudo bash ` then `sudo apt install nodejs`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   install the application but use sqlite3 instead of mysql, run php artisan optimize for better performance
+
+-   after all this install php-fpm and nginx and configure them.
+
+## Recources
+
+-   [Draw Sql](https://drawsql.app/redberry-18/diagrams/coronatime)
