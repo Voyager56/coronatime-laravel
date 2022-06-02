@@ -1,47 +1,48 @@
 <?php
 
-namespace App\Console;
+namespace App\Console\Commands;
 
-use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\Http;
 use App\Models\Country;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 
-class Kernel extends ConsoleKernel
+class InitialazeDatabase extends Command
 {
 	/**
-	 * Define the application's command schedule.
+	 * The name and signature of the console command.
 	 *
-	 * @param \Illuminate\Console\Scheduling\Schedule $schedule
-	 *
-	 * @return void
+	 * @var string
 	 */
-	protected function schedule(Schedule $schedule)
-	{
-		$schedule->call($this->fetch())->daily();
-	}
+	protected $signature = 'db:init';
 
 	/**
-	 * Register the commands for the application.
+	 * The console command description.
 	 *
-	 * @return void
+	 * @var string
 	 */
-	protected function commands()
-	{
-		$this->load(__DIR__ . '/Commands');
+	protected $description = 'Command description';
 
-		require base_path('routes/console.php');
-	}
-
-	private function fetch(): Void
+	/**
+	 * Execute the console command.
+	 *
+	 * @return int
+	 */
+	public function handle()
 	{
+		$countries = Http::get('https://devtest.ge/countries')->json();
 		$worldwideConfirmed = 0;
 		$worldwideDeaths = 0;
 		$worldwideRecovered = 0;
-		foreach (Country::all() as $country)
+		foreach ($countries as $countryData)
 		{
+			$country = Country::create([
+				'code' => $countryData['code'],
+				'en'   => $countryData['name']['en'],
+				'ka'   => $countryData['name']['ka'],
+			]);
+
 			$countryStat = Http::post('https://devtest.ge/get-country-statistics', [
-				'code' => $country['code'],
+				'code' => $countryData['code'],
 			])->json();
 
 			$country->statistics()->updateOrCreate([
