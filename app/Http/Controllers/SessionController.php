@@ -10,21 +10,14 @@ class SessionController extends Controller
 {
 	public function loginUser(LoginRequest $request): RedirectResponse
 	{
-		if (Auth::attempt(['username' => $request->username, 'password' => $request->password]))
+		$username = $request->input('username');
+		$field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+		if (Auth::attempt([$field => $username, 'password' => $request->input('password')]))
 		{
-			return back()->withErrors(['username'=>'You are now logged in.']);
-		}
-		elseif (Auth::attempt(['email'=> $request->username, 'password' => $request->password]))
-		{
-			return back()->withErrors(['username'=>'You are now logged in. email']);
+			return redirect()->route('home');
 		}
 
-		return back()
-		->withInput()
-		->withErrors([
-			'username' => __('credentials-match'),
-			'password' => __('credentials-match'),
-		]);
+		return redirect()->back()->withErrors(['password' => 'incorrect password']);
 	}
 
 	public function logoutUser(): RedirectResponse

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordResetRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -47,16 +48,13 @@ class PasswordResetController extends Controller
 		]);
 	}
 
-	public function saveNewPassword(Request $request): RedirectResponse
+	public function saveNewPassword(PasswordresetRequest $request): RedirectResponse
 	{
-		$request->validate([
-			'token'    => 'required',
-			'password' => 'required|min:3|confirmed',
-		]);
+		$data = $request->validated();
 
 		$updatePasswordUser = DB::table('password_resets')
 		->where([
-			'token' => $request->token,
+			'token' => $data['token'],
 		])
 		->first();
 

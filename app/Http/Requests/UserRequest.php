@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class UserRequest extends FormRequest
 {
@@ -42,5 +43,10 @@ class UserRequest extends FormRequest
 			'password.min'       => __('password-min'),
 			'password.confirmed' => __('password-confirmed'),
 		];
+	}
+
+	public function withValidator(Validator $validator)
+	{
+		return redirect()->back()->withInput()->withErrors($validator->errors());
 	}
 }
