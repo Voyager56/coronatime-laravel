@@ -4,28 +4,32 @@
         <h2 class="py-5 text-3xl font-bold">{{ __('welcome') }}</h2>
         <p class="pb-5 text-xl text-gray-500">{{ __('enter-details') }}</p>
 
+
         <form method="POST" action="{{ route('login.store') }}">
             @csrf
             <div class="mb-6">
                 <label for="username"
                     class="text-black-700 mb-2 block text-xs font-bold uppercase">{{ __('username') }}</label>
-                <input type="text" name="username" id="username"
-                    class="@error('username') border-red-400 @enderror w-[20rem] rounded-xl border border-gray-400 p-2"
-                    value="" required>
-
+                <div class="relative flex w-fit">
+                    <input type="text" name="username" id="username" class="w-[20rem] rounded-xl border p-2"
+                        style="border-color: {{ old('username') ? (!$errors->has('username') ? 'green' : 'red') : 'blue' }}"
+                        value="{{ old('username') }}" required>
+                    <x-success :errors="$errors" field="username" />
+                </div>
                 @error('username')
-                    <p class="text-xs italic text-red-500">{{ $message }}</p>
+                    <x-error message="{{ $message }}" />
                 @enderror
             </div>
             <div class="mb-6">
                 <label for="password"
                     class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('password') }}</label>
-                <input type="password" name="password" id="password"
-                    class="@error('password') border-red-400 @enderror w-[20rem] rounded-xl border border-gray-400 p-2"
-                    required>
+                <div class="relative flex w-fit">
+                    <input type="password" name="password" id="password" class="w-[20rem] rounded-xl border p-2" required
+                        style="border-color: {{ $errors->has('password') ? 'red' : 'blue' }}">
+                </div>
 
                 @error('password')
-                    <p class="text-xs italic text-red-500">{{ $message }}</p>
+                    <x-error message="{{ $message }}" />
                 @enderror
             </div>
             <div class="flex">

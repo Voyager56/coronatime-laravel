@@ -33,6 +33,8 @@
     "password-required": "პაროლი აუცილებელია",
     "password-min": "პაროლი უნდა შედგებოდეს მინიმუმ 6 სიმბოლოს",
     "password-confirmed": "პაროლები არ ემთხვევა",
-    "credentials-match": "მომხმარებლის სახელი ან პაროლი არასწორია"
+    "credentials-match": "მომხმარებლის სახელი ან პაროლი არასწორია",
+    "username-exists": "მომხმარებელი არ არსებობს",
+    "password-incorrect": "არასწორი პაროლი"
 
 }   

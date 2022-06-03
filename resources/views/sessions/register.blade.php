@@ -14,49 +14,69 @@
             <div class="mb-6">
                 <label for="username"
                     class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('username') }}</label>
-                <input type="text" name="username" id="username" placeholder="{{ __('enter-username') }}"
-                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
-                    style="border-color: {{ old('username') ? (!$errors->has('username') ? 'green' : 'red') : 'blue' }}"
-                    value="{{ old('username') }}" required>
+                <div class="relative flex w-fit">
+                    <input type="text" name="username" id="username" placeholder="{{ __('enter-username') }}"
+                        class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                        style="border-color: {{ old('username') ? (!$errors->has('username') ? 'green' : 'red') : 'blue' }}"
+                        value="{{ old('username') }}" required>
+                    <x-success :errors="$errors" field="username" />
+                </div>
             </div>
             @error('username')
-                <p class="text-xs italic text-red-500">{{ $message }}</p>
+                <div class="flex items-center">
+                    <img src="{{ asset('images/error.png') }}" width="20" alt="">
+                    <p class="ml-1 text-xs italic text-red-500">{{ $message }}</p>
+                </div>
             @enderror
 
             <div class="mb-6">
                 <label for="email" class="mb-2 block text-xs font-bold uppercase text-gray-700"> {{ __('email') }}</label>
-                <input type="text" name="email" id="email" placeholder="{{ __('enter-email') }}"
-                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
-                    style="border-color: {{ old('email') ? (!$errors->has('email') ? 'green' : 'red') : 'blue' }}"
-                    value="{{ old('email') }}" required>
-
+                <div class="relative flex w-fit">
+                    <input type="text" name="email" id="email" placeholder="{{ __('enter-email') }}"
+                        class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                        style="border-color: {{ old('email') ? (!$errors->has('email') ? 'green' : 'red') : 'blue' }}"
+                        value="{{ old('email') }}" required>
+                    <x-success :errors="$errors" field="email" />
+                </div>
                 @error('email')
-                    <p class="text-xs italic text-red-500">{{ $message }}</p>
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/error.png') }}" width="20" alt="">
+                        <p class="ml-1 text-xs italic text-red-500">{{ $message }}</p>
+                    </div>
                 @enderror
             </div>
             <div class="mb-6">
                 <label for="password" class="mb-2 block text-xs font-bold uppercase text-gray-700">
                     {{ __('password') }}</label>
-                <input type="password" name="password" id="password" placeholder="{{ __('enter-password') }}"
-                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
-                    style="border-color: {{ old('password') ? (!$errors->has('password') ? 'green' : 'red') : 'blue' }}"
-                    value="{{ old('password') }}" required>
-
+                <div class="relative flex w-fit">
+                    <input type="password" name="password" id="password" placeholder="{{ __('enter-password') }}"
+                        class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                        style="border-color: {{ $errors->has('password') ? 'red' : 'blue' }}"
+                        value="{{ old('password') }}" required>
+                </div>
                 @error('password')
-                    <p class="text-xs italic text-red-500">{{ $message }}</p>
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/error.png') }}" width="20" alt="">
+                        <p class="ml-1 text-xs italic text-red-500">{{ $message }}</p>
+                    </div>
                 @enderror
             </div>
             <div class="mb-6">
                 <label for="password_confirmation" class="mb-2 block text-xs font-bold uppercase text-gray-700">
                     {{ __('repeat-password') }}</label>
-                <input type="password" name="password_confirmation" id="password_confirmation"
-                    placeholder="{{ __('repeat-password') }}"
-                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
-                    style="border-color: {{ old('password_confirmation') ? (!$errors->has('password_confirmation') ? 'green' : 'red') : 'blue' }}"
-                    value="{{ old('repeat-password') }}" required>
+                <div class="relative flex w-fit">
 
+                    <input type="password" name="password_confirmation" id="password_confirmation"
+                        placeholder="{{ __('repeat-password') }}"
+                        class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                        style="border-color: {{ $errors->has('password_confirmed') ? 'red' : 'blue' }}"
+                        value="{{ old('password_confirmation') }}" required>
+                </div>
                 @error('password_confirmation')
-                    <p class="text-xs italic text-red-500">{{ $message }}</p>
+                    <div class="flex items-center">
+                        <img src="{{ asset('images/error.png') }}" width="20" alt="">
+                        <p class="ml-1 text-xs italic text-red-500">{{ $message }}</p>
+                    </div>
                 @enderror
             </div>
 
@@ -67,6 +87,7 @@
                 </button>
             </div>
         </form>
+
 
         <div class="flex">
             <p class="px-5"> {{ __('have-account?') }}</p>
