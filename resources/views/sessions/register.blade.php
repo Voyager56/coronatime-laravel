@@ -60,10 +60,6 @@
                 @enderror
             </div>
 
-            <div class="hidden">
-                <input name="form-sent" value="true">
-            </div>
-
             <div class="mb-6">
                 <button type="submit"
                     class="hover:bg-blur-500 h-[3rem] w-[20rem] rounded-xl bg-green-400 py-2 px-4 text-white">

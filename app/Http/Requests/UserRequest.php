@@ -43,11 +43,4 @@ class UserRequest extends FormRequest
 			'password.confirmed' => __('password-confirmed'),
 		];
 	}
-
-	public function response()
-	{
-		return redirect()->back()->withInput()->withErrors(
-			$this->errors()
-		);
-	}
 }
