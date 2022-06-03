@@ -8,11 +8,6 @@
             {{ __('enter-fields') }}
         </p>
 
-        @if (old('form-sent'))
-            <div class="text-slim fixed bottom-3 right-3 rounded-xl bg-green-400 p-3 text-white">
-                <p>sent</p>
-            </div>
-        @endif
 
         <form method="POST" action="/signup">
             @csrf
@@ -20,7 +15,8 @@
                 <label for="username"
                     class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('username') }}</label>
                 <input type="text" name="username" id="username" placeholder="{{ __('enter-username') }}"
-                    class="@error('username') border-red-400 @enderror w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                    style="border-color: {{ old('username') ? (!$errors->has('username') ? 'green' : 'red') : 'blue' }}"
                     value="{{ old('username') }}" required>
             </div>
             @error('username')
@@ -30,7 +26,8 @@
             <div class="mb-6">
                 <label for="email" class="mb-2 block text-xs font-bold uppercase text-gray-700"> {{ __('email') }}</label>
                 <input type="text" name="email" id="email" placeholder="{{ __('enter-email') }}"
-                    class="@error('email') border-red-400 @enderror w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                    style="border-color: {{ old('email') ? (!$errors->has('email') ? 'green' : 'red') : 'blue' }}"
                     value="{{ old('email') }}" required>
 
                 @error('email')
@@ -41,7 +38,8 @@
                 <label for="password" class="mb-2 block text-xs font-bold uppercase text-gray-700">
                     {{ __('password') }}</label>
                 <input type="password" name="password" id="password" placeholder="{{ __('enter-password') }}"
-                    class="@error('password') border-red-400 @enderror w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                    style="border-color: {{ old('password') ? (!$errors->has('password') ? 'green' : 'red') : 'blue' }}"
                     value="{{ old('password') }}" required>
 
                 @error('password')
@@ -53,7 +51,8 @@
                     {{ __('repeat-password') }}</label>
                 <input type="password" name="password_confirmation" id="password_confirmation"
                     placeholder="{{ __('repeat-password') }}"
-                    class="@error('password-confirmation') border-red-400 @enderror w-[20rem] border border-blue-400 p-2 focus:border-blue-700 focus:outline-none"
+                    class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
+                    style="border-color: {{ old('password_confirmation') ? (!$errors->has('password_confirmation') ? 'green' : 'red') : 'blue' }}"
                     value="{{ old('repeat-password') }}" required>
 
                 @error('password_confirmation')
