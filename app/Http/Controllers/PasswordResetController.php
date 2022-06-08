@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailRequest;
 use App\Http\Requests\PasswordResetRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -13,9 +13,10 @@ use Illuminate\View\View;
 
 class PasswordResetController extends Controller
 {
-	public function sendPasswordResetEmail(Request $request): RedirectResponse|View
+	public function sendPasswordResetEmail(EmailRequest $request): RedirectResponse|View
 	{
-		$email = $request->validate(['email' => 'required|email']);
+		$email = $request->validated();
+
 		$user = User::where('email', $email)->first();
 		if (!$user)
 		{
@@ -60,7 +61,7 @@ class PasswordResetController extends Controller
 
 		if (!$updatePasswordUser)
 		{
-			return back()->withInput()->with('error', 'Invalid token!');
+			return back()->withInput()->withErrors(['token' => 'Token not found']);
 		}
 		$user = User::where('email', $updatePasswordUser->email)->first();
 		$user->update(['password' => bcrypt($request->password)]);
