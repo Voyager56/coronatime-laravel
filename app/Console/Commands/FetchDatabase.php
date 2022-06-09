@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Http;
 use App\Models\Country;
+use App\Models\Statistic;
 use Illuminate\Console\Command;
 
 class FetchDatabase extends Command
@@ -29,15 +30,17 @@ class FetchDatabase extends Command
 	 */
 	public function handle()
 	{
-		$worldwideConfirmed = 0;
-		$worldwideDeaths = 0;
-		$worldwideRecovered = 0;
-		foreach (Country::all() as $country)
+		$countries = Http::get('https://devtest.ge/countries')->json();
+		foreach ($countries as $countryData)
 		{
+			$country = Country::updateOrCreate([
+				'code' => $countryData['code'],
+				'en'   => $countryData['name']['en'],
+				'ka'   => $countryData['name']['ka'],
+			]);
 			$countryStat = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			])->json();
-
 			$country->statistics()->updateOrCreate([
 				'country_name' => $countryStat['country'],
 				'country_code' => $countryStat['code'],
@@ -45,17 +48,12 @@ class FetchDatabase extends Command
 				'deaths'       => $countryStat['deaths'],
 				'recovered'    => $countryStat['recovered'],
 			]);
-
-			$worldwideConfirmed += $countryStat['confirmed'];
-			$worldwideDeaths += $countryStat['deaths'];
-			$worldwideRecovered += $countryStat['recovered'];
 		}
-
-		cache()->remember('worldWideStat', now()->addDay(), function () use ($worldwideConfirmed, $worldwideDeaths, $worldwideRecovered) {
+		cache()->remember('worldWideStat', now()->addDay(), function () {
 			return [
-				'confirmed' => $worldwideConfirmed,
-				'deaths'    => $worldwideDeaths,
-				'recovered' => $worldwideRecovered,
+				'confirmed' => Statistic::sum('confirmed'),
+				'deaths'    => Statistic::sum('deaths'),
+				'recovered' => Statistic::sum('recovered'),
 			];
 		});
 	}
