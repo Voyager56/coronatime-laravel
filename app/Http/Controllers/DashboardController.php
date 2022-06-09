@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -13,11 +12,10 @@ class DashboardController extends Controller
 		return view('components.worldwide', ['stats' => cache('worldWideStat')]);
 	}
 
-	public function show(Request $request): View
+	public function show(): View
 	{
 		return view('components.countries', [
 			'countries' => Country::latest()->filter(request()->only(['search']))->get(),
-			'request'   => $request,
 		]);
 	}
 }
