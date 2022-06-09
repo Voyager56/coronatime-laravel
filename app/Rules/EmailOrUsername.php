@@ -28,7 +28,7 @@ class EmailOrUsername implements Rule
 	{
 		return User::where(function ($q) use ($value) {
 			$q->orWhere('email', $value)->orWhere('username', $value);
-		})->count() > 0;
+		})->exists();
 	}
 
 	/**
