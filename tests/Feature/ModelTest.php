@@ -17,7 +17,12 @@ class ModelTests extends TestCase
 
 	public function test_country_search_function()
 	{
-		$country = Country::latest()->filter(['search' => 'Geo'])->get()->first();
-		$this->assertTrue($country->en === 'Georgia');
+		Country::create([
+			'code' => 'test',
+			'en'   => 'test',
+			'ka'   => 'ტესტ',
+		]);
+		$country = Country::latest()->filter(['search' => 'test'])->get()->first();
+		$this->assertTrue($country->ka === 'ტესტ');
 	}
 }
