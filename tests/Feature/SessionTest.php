@@ -7,6 +7,14 @@ use Tests\TestCase;
 
 class SessionTest extends TestCase
 {
+	protected $user;
+
+	public function setUp(): void
+	{
+		parent::setUp();
+		$this->user = User::factory()->create();
+	}
+
 	public function test_see_if_landing_page_is_also_login_page()
 	{
 		$response = $this->get('/');
@@ -26,9 +34,8 @@ class SessionTest extends TestCase
 
 	public function test_if_wrong_password_is_entered_then_error_is_shown()
 	{
-		$user = User::factory()->create();
 		$response = $this->post('/login', [
-			'username' => $user->username,
+			'username' => $this->user->username,
 			'password' => 'asdasd',
 		]);
 		$response->assertRedirect('/');
@@ -37,9 +44,8 @@ class SessionTest extends TestCase
 
 	public function test_if_validation_is_successful_then_user_is_logged_in()
 	{
-		$user = User::factory()->create();
 		$response = $this->post('/login', [
-			'username' => $user->username,
+			'username' => $this->user->username,
 			'password' => 'password',
 		]);
 		$response->assertRedirect('/home');
@@ -47,9 +53,8 @@ class SessionTest extends TestCase
 
 	public function test_if_logout_button_is_clicked_user_should_be_logged_out()
 	{
-		$user = User::factory()->create();
 		$response = $this->post('/login', [
-			'username' => $user->username,
+			'username' => $this->user->username,
 			'password' => 'password',
 		]);
 		$response->assertRedirect('/home');
@@ -59,15 +64,13 @@ class SessionTest extends TestCase
 
 	public function test_when_loged_in_dashboard_should_be_shown()
 	{
-		$user = User::factory()->create();
-		$response = $this->actingAs($user)->get('/home');
+		$response = $this->actingAs($this->user)->get('/home');
 		$response->assertSee('Dashboard');
 	}
 
 	public function test_when_loged_in_countries_stats_should_be_visitable()
 	{
-		$user = User::factory()->create();
-		$response = $this->actingAs($user)->get('/countries');
+		$response = $this->actingAs($this->user)->get('/countries');
 		$response->assertSee('Country Statistics');
 	}
 }
