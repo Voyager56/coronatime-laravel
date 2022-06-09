@@ -16,7 +16,7 @@
 
     <div class="absolute top-[50%] flex flex-col items-center">
         <h1 class="mb-10 text-4xl font-bold">Reset Password</h1>
-        <form method="POST" action="/forgot-password">
+        <form method="POST" action="{{ route('password.email') }}">
             @csrf
             <div class="mb-6">
                 <label for="email" class="mb-2 block text-xs font-bold uppercase text-gray-700">Email</label>

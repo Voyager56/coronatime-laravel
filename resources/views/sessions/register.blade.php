@@ -9,7 +9,7 @@
         </p>
 
 
-        <form method="POST" action="/signup">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="mb-6">
                 <label for="username"
