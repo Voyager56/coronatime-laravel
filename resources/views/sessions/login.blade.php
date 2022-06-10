@@ -39,7 +39,7 @@
                         class="ml-5 mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('remember') }}</label>
                 </div>
                 <a class="text-xs text-blue-400"
-                    href="{{ route('password.request') }}">{{ __('forgot-passowrd') }}</a>
+                    href="{{ route('forgot-password.page') }}">{{ __('forgot-passowrd') }}</a>
             </div>
             <div class="mb-6">
                 <button type="submit"
