@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EmailRequest;
+use App\Http\Requests\sendPasswordResetEmailRequest;
 use App\Http\Requests\PasswordResetRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -13,9 +13,9 @@ use Illuminate\View\View;
 
 class PasswordResetController extends Controller
 {
-	public function sendPasswordResetEmail(EmailRequest $request): RedirectResponse|View
+	public function sendPasswordResetEmail(sendPasswordResetEmailRequest $request): RedirectResponse|View
 	{
-		$email = $request->validated();
+		$email = $request->email;
 
 		$user = User::where('email', $email)->first();
 		if (!$user)
@@ -51,11 +51,9 @@ class PasswordResetController extends Controller
 
 	public function saveNewPassword(PasswordresetRequest $request): RedirectResponse
 	{
-		$data = $request->validated();
-
 		$updatePasswordUser = DB::table('password_resets')
 		->where([
-			'token' => $data['token'],
+			'token' => $request->token,
 		])
 		->first();
 

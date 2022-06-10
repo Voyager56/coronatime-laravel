@@ -11,7 +11,7 @@ class RegistrationController extends Controller
 {
 	public function registration(UserRequest $request): View
 	{
-		$userData = $request->validated();
+		$userData = $request->all();
 
 		$user = User::create([
 			'username'     => $userData['username'],

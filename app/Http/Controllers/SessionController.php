@@ -10,9 +10,9 @@ class SessionController extends Controller
 {
 	public function loginUser(LoginRequest $request): RedirectResponse
 	{
-		$username = $request->input('username');
+		$username = $request->username;
 		$field = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-		if (Auth::attempt([$field => $username, 'password' => $request->input('password')]))
+		if (Auth::attempt([$field => $username, 'password' => $request->password]))
 		{
 			return redirect()->route('home');
 		}
