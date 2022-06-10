@@ -7,7 +7,7 @@ use App\Models\Country;
 use App\Models\Statistic;
 use Illuminate\Console\Command;
 
-class FetchDatabase extends Command
+class GenerateDatabase extends Command
 {
 	/**
 	 * The name and signature of the console command.
