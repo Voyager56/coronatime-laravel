@@ -47,7 +47,7 @@ Generate the keys for the application: `php artisan key:generate`
 
 Initialize the database: `php artisan migrate:fresh`
 
-run `php artisan generate:database` to initialize the statistics database
+run `php artisan generate:statistics` to initialize the statistics database
 
 ## Development
 

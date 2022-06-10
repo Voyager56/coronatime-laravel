@@ -29,7 +29,7 @@ class CommandTest extends TestCase
 			], 200, ['HEADERS']),
 		]);
 
-		$this->artisan('generate:database')->assertExitCode(0);
+		$this->artisan('generate:statistics')->assertExitCode(0);
 		$this->assertDatabaseHas('countries', [
 			'code' => 'test',
 			'en'   => 'test',
