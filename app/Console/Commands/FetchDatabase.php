@@ -7,14 +7,14 @@ use App\Models\Country;
 use App\Models\Statistic;
 use Illuminate\Console\Command;
 
-class GenerateStatistics extends Command
+class FetchDatabase extends Command
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $signature = 'generate:database';
+	protected $signature = 'fetch:database';
 
 	/**
 	 * The console command description.
