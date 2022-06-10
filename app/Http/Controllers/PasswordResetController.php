@@ -15,9 +15,7 @@ class PasswordResetController extends Controller
 {
 	public function sendPasswordResetEmail(sendPasswordResetEmailRequest $request): RedirectResponse|View
 	{
-		$email = $request->email;
-
-		$user = User::where('email', $email)->first();
+		$user = User::where('email', $request->email)->first();
 		if (!$user)
 		{
 			return redirect()->back()->withErrors(['email' => 'Email not found']);
@@ -66,7 +64,7 @@ class PasswordResetController extends Controller
 
 		DB::table('password_resets')->where(['email'=> $user->email])->delete();
 
-		return redirect('/')->with('message', 'Your password has been changed!');
+		return redirect()->route('home')->with('message', 'Your password has been changed!');
 	}
 
 	public function resetPassword(string $token): View
