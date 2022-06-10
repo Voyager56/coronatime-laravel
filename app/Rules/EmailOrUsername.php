@@ -38,6 +38,6 @@ class EmailOrUsername implements Rule
 	 */
 	public function message()
 	{
-		return __('username-exists');
+		return __('username_exists');
 	}
 }

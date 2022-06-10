@@ -34,14 +34,14 @@ class UserRequest extends FormRequest
 	public function messages()
 	{
 		return [
-			'username.required'  => __('username-required'),
-			'username.min'       => __('username-min'),
-			'email.required'     => __('email-required'),
-			'email.email'        => __('email-invalid'),
-			'email.unique'       => __('email-unique'),
-			'password.required'  => __('password-required'),
-			'password.min'       => __('password-min'),
-			'password.confirmed' => __('password-confirmed'),
+			'username.required'  => __('username_required'),
+			'username.min'       => __('username_min'),
+			'email.required'     => __('email_required'),
+			'email.email'        => __('email_invalid'),
+			'email.unique'       => __('email_unique'),
+			'password.required'  => __('password_required'),
+			'password.min'       => __('password_min'),
+			'password.confirmed' => __('password_confirmed'),
 		];
 	}
 

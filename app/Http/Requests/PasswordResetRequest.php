@@ -32,9 +32,9 @@ class PasswordResetRequest extends FormRequest
 	public function messages()
 	{
 		return [
-			'password.required'  => __('password-required'),
-			'password.min'       => __('password-min'),
-			'password.confirmed' => __('password-confirmed'),
+			'password.required'  => __('password_required'),
+			'password.min'       => __('password_min'),
+			'password.confirmed' => __('password_confirmed'),
 		];
 	}
 }

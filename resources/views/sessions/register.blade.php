@@ -2,10 +2,10 @@
 @section('content')
     <section class="my-10 flex flex-col">
         <h1 class="py-5 text-3xl font-bold">
-            {{ __('welcome-to') }}
+            {{ __('welcome_to') }}
         </h1>
         <p class="pb-5 text-xl text-gray-500">
-            {{ __('enter-fields') }}
+            {{ __('enter_fields') }}
         </p>
 
 
@@ -15,7 +15,7 @@
                 <label for="username"
                     class="mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('username') }}</label>
                 <div class="relative flex w-fit">
-                    <input type="text" name="username" id="username" placeholder="{{ __('enter-username') }}"
+                    <input type="text" name="username" id="username" placeholder="{{ __('enter_username') }}"
                         class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
                         style="border-color: {{ old('username') ? (!$errors->has('username') ? 'green' : 'red') : 'blue' }}"
                         value="{{ old('username') }}" required>
@@ -32,7 +32,7 @@
             <div class="mb-6">
                 <label for="email" class="mb-2 block text-xs font-bold uppercase text-gray-700"> {{ __('email') }}</label>
                 <div class="relative flex w-fit">
-                    <input type="text" name="email" id="email" placeholder="{{ __('enter-email') }}"
+                    <input type="text" name="email" id="email" placeholder="{{ __('enter_email') }}"
                         class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
                         style="border-color: {{ old('email') ? (!$errors->has('email') ? 'green' : 'red') : 'blue' }}"
                         value="{{ old('email') }}" required>
@@ -49,7 +49,7 @@
                 <label for="password" class="mb-2 block text-xs font-bold uppercase text-gray-700">
                     {{ __('password') }}</label>
                 <div class="relative flex w-fit">
-                    <input type="password" name="password" id="password" placeholder="{{ __('enter-password') }}"
+                    <input type="password" name="password" id="password" placeholder="{{ __('enter_password') }}"
                         class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
                         style="border-color: {{ $errors->has('password') ? 'red' : 'blue' }}"
                         value="{{ old('password') }}" required>
@@ -63,11 +63,11 @@
             </div>
             <div class="mb-6">
                 <label for="password_confirmation" class="mb-2 block text-xs font-bold uppercase text-gray-700">
-                    {{ __('repeat-password') }}</label>
+                    {{ __('repeat_password') }}</label>
                 <div class="relative flex w-fit">
 
                     <input type="password" name="password_confirmation" id="password_confirmation"
-                        placeholder="{{ __('repeat-password') }}"
+                        placeholder="{{ __('repeat_password') }}"
                         class="w-[20rem] border p-2 focus:border-blue-700 focus:outline-none"
                         style="border-color: {{ $errors->has('password_confirmed') ? 'red' : 'blue' }}"
                         value="{{ old('password_confirmation') }}" required>
@@ -83,15 +83,15 @@
             <div class="mb-6">
                 <button type="submit"
                     class="hover:bg-blur-500 h-[3rem] w-[20rem] rounded-xl bg-green-400 py-2 px-4 text-white">
-                    {{ __('sign-up') }}
+                    {{ __('sign_up') }}
                 </button>
             </div>
         </form>
 
 
         <div class="flex">
-            <p class="px-5"> {{ __('have-account?') }}</p>
-            <a class="font-bold" href="{{ route('login') }}"> {{ __('log-in') }}</a>
+            <p class="px-5"> {{ __('have_account?') }}</p>
+            <a class="font-bold" href="{{ route('login') }}"> {{ __('log_in') }}</a>
         </div>
     </section>
 @endsection

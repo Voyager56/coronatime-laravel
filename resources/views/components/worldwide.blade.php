@@ -7,7 +7,7 @@
             class="lg: col-span-4 flex w-[95vw] flex-col items-center justify-center rounded-xl bg-blue-300/[0.3] p-[3rem] md:h-[20rem] md:w-[20rem] md:p-[8rem]">
             <img src="{{ asset('images/cases.png') }}" width="500" alt="">
             <div class="py-5 text-center font-bold">
-                {{ __('new-cases') }}
+                {{ __('new_cases') }}
             </div>
             <div class="text-center font-bold">
                 {{ $stats['confirmed'] }}

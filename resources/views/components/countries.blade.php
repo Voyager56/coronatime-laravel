@@ -32,7 +32,7 @@
                     <th class="flex items-center justify-center md:w-1/4 md:p-4" id="newcases" data-asc=false>
                         <div class="w-[70px] overflow-clip md:w-[100px] md:overflow-visible">
 
-                            {{ __('new-cases') }}
+                            {{ __('new_cases') }}
                         </div>
                         <x-arrows />
 

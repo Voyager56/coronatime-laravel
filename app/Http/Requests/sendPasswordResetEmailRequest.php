@@ -31,8 +31,8 @@ class sendPasswordResetEmailRequest extends FormRequest
 	public function messages()
 	{
 		return [
-			'email.required'     => __('email-required'),
-			'email.email'        => __('email-invalid'),
+			'email.required'     => __('email_required'),
+			'email.email'        => __('email_invalid'),
 		];
 	}
 }

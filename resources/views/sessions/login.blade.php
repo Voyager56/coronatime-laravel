@@ -2,7 +2,7 @@
 @section('content')
     <section class="my-10 flex flex-col">
         <h2 class="py-5 text-3xl font-bold">{{ __('welcome') }}</h2>
-        <p class="pb-5 text-xl text-gray-500">{{ __('enter-details') }}</p>
+        <p class="pb-5 text-xl text-gray-500">{{ __('enter_details') }}</p>
 
 
         <form method="POST" action="{{ route('login.store') }}">
@@ -39,17 +39,17 @@
                         class="ml-5 mb-2 block text-xs font-bold uppercase text-gray-700">{{ __('remember') }}</label>
                 </div>
                 <a class="text-xs text-blue-400"
-                    href="{{ route('forgot-password.page') }}">{{ __('forgot-passowrd') }}</a>
+                    href="{{ route('forgot-password.page') }}">{{ __('forgot_passowrd') }}</a>
             </div>
             <div class="mb-6">
                 <button type="submit"
                     class="hover:bg-blur-500 h-[3rem] w-[20rem] rounded-xl bg-green-400 py-2 px-4 text-white">
-                    {{ __('log-in') }}
+                    {{ __('log_in') }}
                 </button>
             </div>
             <div class="flex">
                 <p class="px-5">{{ __('account?') }}</p>
-                <a class="font-bold" href="{{ route('register') }}">{{ __('sign-up') }}</a>
+                <a class="font-bold" href="{{ route('register') }}">{{ __('sign_up') }}</a>
             </div>
         </form>
     </section>
