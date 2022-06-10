@@ -8,31 +8,36 @@ use Tests\TestCase;
 
 class EmailTest extends TestCase
 {
+	protected $user;
+
+	public function setUp(): void
+	{
+		parent::setUp();
+		$this->user = User::factory()->create([
+			'email_verified_at' => null,
+		]);
+	}
+
 	public function test_email_verification_view()
 	{
-		$user = User::factory()->create();
-		$response = $this->actingAs($user)->get('/email/verify');
+		$response = $this->actingAs($this->user)->get('/email/verify');
 		$response->assertStatus(200);
 	}
 
 	public function test_email_verification_verify()
 	{
-		$user = User::factory()->create();
 		$verificationUrl = URL::temporarySignedRoute(
 			'verification.verify',
 			now()->addMinutes(60),
-			['id' => $user->id, 'hash' => sha1($user->email)]
+			['id' => $this->user->id, 'hash' => sha1($this->user->email)]
 		);
-		$response = $this->actingAs($user)->get($verificationUrl);
+		$response = $this->actingAs($this->user)->get($verificationUrl);
 		$response->assertStatus(200);
 	}
 
 	public function test_sends_verification_message()
 	{
-		$user = User::factory()->create([
-			'email_verified_at' => null,
-		]);
-		$response = $this->actingAs($user)->post('/email/verification-notification');
+		$response = $this->actingAs($this->user)->post('/email/verification-notification');
 		$response->assertRedirect('/');
 		$response->assertSessionHas('message', 'Verification link sent!');
 	}

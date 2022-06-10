@@ -59,7 +59,6 @@ class SessionTest extends TestCase
 		]);
 		$response->assertRedirect('/home');
 		$response = $this->post('/logout');
-		$response->assertRedirect('/');
 	}
 
 	public function test_when_loged_in_dashboard_should_be_shown()

@@ -22,7 +22,7 @@ class ModelTests extends TestCase
 			'en'   => 'test',
 			'ka'   => 'ტესტ',
 		]);
-		$country = Country::latest()->filter(['search' => 'test'])->get()->first();
+		$country = Country::latest()->filter('test')->get()->first();
 		$this->assertTrue($country->ka === 'ტესტ');
 	}
 }
