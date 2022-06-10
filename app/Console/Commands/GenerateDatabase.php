@@ -14,7 +14,7 @@ class FetchDatabase extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'fetch:database';
+	protected $signature = 'generate:database';
 
 	/**
 	 * The console command description.
