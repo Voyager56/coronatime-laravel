@@ -18,13 +18,13 @@ class Country extends Model
 		return $this->hasOne(Statistic::class);
 	}
 
-	public function scopeFilter($query, array $filters)
+	public function scopeFilter($query, $search)
 	{
-		if ($filters['search'] ?? false)
+		if ($search ?? false)
 		{
 			$query->where(fn ($query) => $query
-				->where('en', 'like', "%{$filters['search']}%"))
-				->orWhere('ka', 'like', "%{$filters['search']}%");
+				->where('en', 'like', "%{$search}%"))
+				->orWhere('ka', 'like', "%{$search}%");
 		}
 	}
 }
