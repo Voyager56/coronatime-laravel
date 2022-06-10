@@ -23,6 +23,6 @@ class SessionController extends Controller
 	public function logoutUser(): RedirectResponse
 	{
 		auth()->logout();
-		return redirect(route('home'));
+		return redirect()->route('home');
 	}
 }
